@@ -5,7 +5,10 @@ using namespace std;
 
 int main()
 {
-    AddresBook adressBook;
+    AddressBook addressBook;
+    addressBook.userRejestration();
+    addressBook.userRejestration();
+    addressBook.showAllUsers();
 
     return 0;
 }
