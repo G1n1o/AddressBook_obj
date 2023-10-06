@@ -9,6 +9,7 @@ UserManager userManager;
 
 
       public:
+ AddressBook();
  void userRegistration();
  void showAllUsers();
 };
