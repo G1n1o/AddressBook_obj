@@ -5,11 +5,13 @@ using namespace std;
 
 class AddressBook {
 
-UserManager userManager;
+    UserManager userManager;
 
 
-      public:
- AddressBook();
- void userRegistration();
- void showAllUsers();
+public:
+    AddressBook(string fileNameWithUsers) : userManager(fileNameWithUsers) {
+        userManager.readUsersFromFile();
+    };
+    void userRegistration();
+    void showAllUsers();
 };
