@@ -9,7 +9,7 @@ using namespace std;
 
 class FileWithUsersData {
 
-    string fileNameWithUsers;
+    const string fileNameWithUsers;
 
     string replaceUserDataOnDataLineSeparatedVerticalDashes(User user);
     User readUserData(string singleUserDataSeparatedbyVerticalDashes);
@@ -17,7 +17,7 @@ class FileWithUsersData {
 
 
 public:
-    FileWithUsersData();
+    FileWithUsersData(string FILENAMEWITHUSERS) : fileNameWithUsers (FILENAMEWITHUSERS) {};
     vector <User> readUsersFromFile();
     void saveUserDataInFile(User user);
 

@@ -1,9 +1,5 @@
 #include "FileWithUsersData.h"
 
-FileWithUsersData::FileWithUsersData() {
-    fileNameWithUsers = "Users.txt";
-}
-
 void FileWithUsersData::saveUserDataInFile(User user) {
     fstream textFile;
     string lineWithUserData = "";
@@ -33,11 +29,9 @@ bool FileWithUsersData::isFileEmpty() {
 
 string FileWithUsersData::replaceUserDataOnDataLineSeparatedVerticalDashes(User user) {
     string lineWithUserData = "";
-
     lineWithUserData += SupportiveMethods::convertFromIntToString(user.getIdUser())+ '|';
     lineWithUserData += user.getLogin() + '|';
     lineWithUserData += user.getPassword() + '|';
-
     return lineWithUserData;
 }
 

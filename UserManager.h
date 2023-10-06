@@ -18,6 +18,7 @@ class UserManager {
     FileWithUsersData fileWithUsersData;
 
       public:
+    UserManager(string fileNameWithUsers) : fileWithUsersData(fileNameWithUsers) {};
     void readUsersFromFile();
     void userRegistration();
     void showAllUsers();
