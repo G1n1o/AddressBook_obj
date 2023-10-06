@@ -14,7 +14,6 @@ void UserManager::userRegistration() {
 
 User UserManager::addDataNewUser() {
     User user;
-
     user.setIdUser(getNewUserId());
 
     do {
@@ -52,3 +51,7 @@ void UserManager::showAllUsers() {
         cout << users[i].getPassword()<<endl;
     }
 }
+void UserManager::readUsersFromFile() {
+      users = fileWithUsersData.readUsersFromFile();
+}
+

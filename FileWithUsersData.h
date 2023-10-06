@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
+#include <cstdlib>
 #include "User.h"
 #include "SupportiveMethods.h"
 
@@ -8,15 +9,18 @@ using namespace std;
 
 class FileWithUsersData {
 
-     string fileNameWithUsers;
-     fstream textFile;
+    string fileNameWithUsers;
+    fstream textFile;
 
-     string replaceUserDataOnDataLineSeparatedVerticalDashes(User user);
-      bool isFileEmpty();
+    string replaceUserDataOnDataLineSeparatedVerticalDashes(User user);
+    User readUserData(string singleUserDataSeparatedbyVerticalDashes);
+    bool isFileEmpty();
 
-  public:
-      FileWithUsersData();
-      void saveUserDataInFile(User user);
+
+public:
+    FileWithUsersData();
+    vector <User> readUsersFromFile();
+    void saveUserDataInFile(User user);
 
 
 };

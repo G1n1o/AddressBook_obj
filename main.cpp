@@ -6,6 +6,7 @@ using namespace std;
 int main()
 {
     AddressBook addressBook;
+    addressBook.showAllUsers();
     addressBook.userRegistration();
     addressBook.userRegistration();
     addressBook.showAllUsers();

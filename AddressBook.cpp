@@ -1,5 +1,8 @@
 #include "AddressBook.h"
 
+AddressBook::AddressBook() {
+   userManager.readUsersFromFile();
+}
 
 void AddressBook::userRegistration() {
 userManager.userRegistration();
