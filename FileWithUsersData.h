@@ -10,7 +10,6 @@ using namespace std;
 class FileWithUsersData {
 
     string fileNameWithUsers;
-    fstream textFile;
 
     string replaceUserDataOnDataLineSeparatedVerticalDashes(User user);
     User readUserData(string singleUserDataSeparatedbyVerticalDashes);

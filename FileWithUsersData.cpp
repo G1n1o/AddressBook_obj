@@ -5,7 +5,7 @@ FileWithUsersData::FileWithUsersData() {
 }
 
 void FileWithUsersData::saveUserDataInFile(User user) {
-
+    fstream textFile;
     string lineWithUserData = "";
     textFile.open(fileNameWithUsers.c_str(), ios::app);
 
@@ -23,6 +23,7 @@ void FileWithUsersData::saveUserDataInFile(User user) {
 }
 
 bool FileWithUsersData::isFileEmpty() {
+    fstream textFile;
     textFile.seekg(0, ios::end);
     if (textFile.tellg() == 0)
         return true;
@@ -43,6 +44,7 @@ string FileWithUsersData::replaceUserDataOnDataLineSeparatedVerticalDashes(User 
 vector <User> FileWithUsersData::readUsersFromFile() {
     User user;
     vector <User> users;
+    fstream textFile;
     string singleUserDataSeparatedbyVerticalDashes = "";
 
     textFile.open(fileNameWithUsers.c_str(), ios::in);
@@ -63,7 +65,7 @@ User FileWithUsersData::readUserData(string singleUserDataSeparatedbyVerticalDas
     string singleUserData = "";
     int numberSingleDataUser = 1;
 
-    for (int itemSign = 0; itemSign < singleUserDataSeparatedbyVerticalDashes.length(); itemSign++) {
+    for (size_t itemSign = 0; itemSign < singleUserDataSeparatedbyVerticalDashes.length(); itemSign++) {
         if (singleUserDataSeparatedbyVerticalDashes[itemSign] != '|') {
             singleUserData += singleUserDataSeparatedbyVerticalDashes[itemSign];
         } else {
