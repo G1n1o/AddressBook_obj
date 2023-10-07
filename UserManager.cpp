@@ -52,6 +52,35 @@ void UserManager::showAllUsers() {
     }
 }
 void UserManager::readUsersFromFile() {
-      users = fileWithUsersData.readUsersFromFile();
+    users = fileWithUsersData.readUsersFromFile();
 }
+
+int UserManager::userLogging() {
+    string login = "", password = "";
+    cout << endl << "Podaj login: ";
+    login = SupportiveMethods::readLine();
+    size_t i=0;
+
+    while (i < users.size()) {
+        if (users[i].getLogin() == login) {
+            for (int quantityTrials = 3; quantityTrials > 0; quantityTrials--) {
+                cout << "Podaj haslo. Pozostalo prob: " << quantityTrials << ": ";
+                password = SupportiveMethods::readLine();
+                if (users[i].getPassword() == password) {
+                    cout << endl << "Zalogowales sie." << endl << endl;
+                    system("pause");
+                    return users[i].getIdUser();
+                }
+            }
+            cout << "Wprowadzono 3 razy bledne haslo." << endl;
+            system("pause");
+            return 0;
+        }
+        i++;
+    }
+    cout << "Nie ma uzytkownika z takim loginem" << endl << endl;
+    system("pause");
+    return 0;
+}
+
 

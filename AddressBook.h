@@ -13,5 +13,6 @@ public:
         userManager.readUsersFromFile();
     };
     void userRegistration();
+    void userLogging();
     void showAllUsers();
 };

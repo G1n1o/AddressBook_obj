@@ -7,3 +7,7 @@ userManager.userRegistration();
 void AddressBook::showAllUsers() {
 userManager.showAllUsers();
 }
+
+void AddressBook::userLogging() {
+userManager.userLogging();
+}
