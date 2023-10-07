@@ -49,7 +49,7 @@ void UserManager::showAllUsers() {
         cout << users[i].getIdUser()<<endl;
         cout << users[i].getLogin()<<endl;
         cout << users[i].getPassword()<<endl;
-    }
+       }
 }
 void UserManager::readUsersFromFile() {
     users = fileWithUsersData.readUsersFromFile();
@@ -97,6 +97,10 @@ void UserManager::changePasswordLoggedUser() {
         }
     }
     fileWithUsersData.saveAllUsersDataInFile(users);
+}
+
+void UserManager::userLogout() {
+    idLoggedUser = 0;
 }
 
 

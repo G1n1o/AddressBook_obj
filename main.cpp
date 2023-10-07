@@ -10,7 +10,9 @@ int main()
     //addressBook.userRegistration();
     addressBook.userLogging();
     addressBook.changePasswordLoggedUser();
+    addressBook.userLogout();
     addressBook.showAllUsers();
+
 
     return 0;
 }
