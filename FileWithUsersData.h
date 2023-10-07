@@ -20,6 +20,5 @@ public:
     FileWithUsersData(string FILENAMEWITHUSERS) : fileNameWithUsers (FILENAMEWITHUSERS) {};
     vector <User> readUsersFromFile();
     void saveUserDataInFile(User user);
-
-
+    void saveAllUsersDataInFile(vector <User> &users);
 };

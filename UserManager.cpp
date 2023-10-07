@@ -55,7 +55,7 @@ void UserManager::readUsersFromFile() {
     users = fileWithUsersData.readUsersFromFile();
 }
 
-int UserManager::userLogging() {
+void UserManager::userLogging() {
     string login = "", password = "";
     cout << endl << "Podaj login: ";
     login = SupportiveMethods::readLine();
@@ -68,19 +68,35 @@ int UserManager::userLogging() {
                 password = SupportiveMethods::readLine();
                 if (users[i].getPassword() == password) {
                     cout << endl << "Zalogowales sie." << endl << endl;
+                    idLoggedUser = users[i].getIdUser();
                     system("pause");
-                    return users[i].getIdUser();
+                    return;
                 }
             }
             cout << "Wprowadzono 3 razy bledne haslo." << endl;
             system("pause");
-            return 0;
+            return;
         }
         i++;
     }
     cout << "Nie ma uzytkownika z takim loginem" << endl << endl;
     system("pause");
-    return 0;
+    return;
+}
+
+void UserManager::changePasswordLoggedUser() {
+    string newPassword = "";
+    cout << "Podaj nowe haslo: ";
+    newPassword = SupportiveMethods::readLine();
+
+    for (vector <User>::iterator itr = users.begin(); itr != users.end(); itr++) {
+        if (itr -> getIdUser() == idLoggedUser) {
+            itr -> setPassword(newPassword);
+            cout << "Haslo zostalo zmienione." << endl << endl;
+            system("pause");
+        }
+    }
+    fileWithUsersData.saveAllUsersDataInFile(users);
 }
 
 

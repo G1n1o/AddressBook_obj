@@ -11,3 +11,6 @@ userManager.showAllUsers();
 void AddressBook::userLogging() {
 userManager.userLogging();
 }
+void AddressBook::changePasswordLoggedUser() {
+userManager.changePasswordLoggedUser();
+}

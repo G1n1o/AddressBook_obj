@@ -81,3 +81,26 @@ User FileWithUsersData::readUserData(string singleUserDataSeparatedbyVerticalDas
     return user;
 }
 
+void FileWithUsersData::saveAllUsersDataInFile(vector <User> &users) {
+    fstream textFile;
+    string lineWithUserData = "";
+    vector <User>::iterator itrEnd = --users.end();
+
+    textFile.open(fileNameWithUsers.c_str(), ios::out);
+
+    if (textFile.good() == true) {
+        for (vector <User>::iterator itr = users.begin(); itr != users.end(); itr++) {
+            lineWithUserData = replaceUserDataOnDataLineSeparatedVerticalDashes(*itr);
+
+            if (itr == itrEnd) {
+                textFile << lineWithUserData;
+            } else {
+                textFile << lineWithUserData << endl;
+            }
+            lineWithUserData = "";
+        }
+    } else {
+        cout << "Nie mozna otworzyc pliku " << fileNameWithUsers << endl;
+    }
+    textFile.close();
+}
