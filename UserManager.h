@@ -10,7 +10,6 @@ using namespace std;
 
 class UserManager {
      int idLoggedUser;
-
      vector <User> users;
 
     User addDataNewUser();
@@ -22,7 +21,7 @@ class UserManager {
     UserManager(string fileNameWithUsers) : fileWithUsersData(fileNameWithUsers) {};
     void readUsersFromFile();
     void userRegistration();
-    int userLogging();
+    void userLogging();
+    void changePasswordLoggedUser();
     void showAllUsers();
-
      };

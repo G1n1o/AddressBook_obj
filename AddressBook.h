@@ -14,5 +14,6 @@ public:
     };
     void userRegistration();
     void userLogging();
+    void changePasswordLoggedUser();
     void showAllUsers();
 };

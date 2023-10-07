@@ -7,8 +7,9 @@ int main()
 {
     AddressBook addressBook("Users.txt");
     addressBook.showAllUsers();
-    addressBook.userRegistration();
+    //addressBook.userRegistration();
     addressBook.userLogging();
+    addressBook.changePasswordLoggedUser();
     addressBook.showAllUsers();
 
     return 0;
