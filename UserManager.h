@@ -22,6 +22,7 @@ class UserManager {
     void readUsersFromFile();
     void userRegistration();
     void userLogging();
+    void userLogout ();
     void changePasswordLoggedUser();
     void showAllUsers();
      };
