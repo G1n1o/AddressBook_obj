@@ -8,7 +8,7 @@ void FileWithUsersData::saveUserDataInFile(User user) {
     if (textFile.good() == true) {
         lineWithUserData = replaceUserDataOnDataLineSeparatedVerticalDashes(user);
 
-        if (isFileEmpty() == true) {
+        if (isFileEmpty(textFile) == true) {
             textFile << lineWithUserData;
         } else {
             textFile << endl << lineWithUserData ;
@@ -18,8 +18,7 @@ void FileWithUsersData::saveUserDataInFile(User user) {
     textFile.close();
 }
 
-bool FileWithUsersData::isFileEmpty() {
-    fstream textFile;
+bool FileWithUsersData::isFileEmpty(fstream &textFile) {
     textFile.seekg(0, ios::end);
     if (textFile.tellg() == 0)
         return true;
@@ -104,3 +103,5 @@ void FileWithUsersData::saveAllUsersDataInFile(vector <User> &users) {
     }
     textFile.close();
 }
+
+

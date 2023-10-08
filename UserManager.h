@@ -25,4 +25,5 @@ class UserManager {
     void userLogout ();
     void changePasswordLoggedUser();
     void showAllUsers();
+    int getidLoggedUser();
      };
