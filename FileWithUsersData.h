@@ -13,7 +13,7 @@ class FileWithUsersData {
 
     string replaceUserDataOnDataLineSeparatedVerticalDashes(User user);
     User readUserData(string singleUserDataSeparatedbyVerticalDashes);
-    bool isFileEmpty();
+    bool isFileEmpty(fstream &textFile);
 
 
 public:
