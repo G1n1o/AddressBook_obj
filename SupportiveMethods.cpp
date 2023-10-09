@@ -24,3 +24,23 @@ string SupportiveMethods::swapFirstLetterForLargeOtherForSmall(string text)
     return text;
 }
 
+string SupportiveMethods::getNumber(string text, int signPosition)
+{
+    string number = "";
+    while(isdigit(text[signPosition]) == true)
+    {
+        number += text[signPosition];
+        signPosition ++;
+    }
+    return number;
+}
+int SupportiveMethods::convertFromStringToInt(string number)
+{
+    int numberInt;
+    istringstream iss(number);
+    iss >> numberInt;
+
+    return numberInt;
+}
+
+
