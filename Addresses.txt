@@ -1,5 +1,0 @@
-1|2|Rafal|Szkudlarek|725 493 343|rafal@mail.com|Kalisz|
-2|2|Ala|Szkudlarek|777 111 222|Ala@ala.com|Kaliss|
-3|2|Julia|Dzik|111 222 333|zoo@zoo.pl|Sieradz|
-4|2|Gieniu|Szkud|123|123|123|
-5|2|Stefab|Loska|1211|dadw|dwadaw|

@@ -1,11 +1,8 @@
 #include "AddresseeManager.h"
 
 
-int AddresseeManager::addNewAddressee() {
+void AddresseeManager::addNewAddressee() {
     Addressee addressee;
-
-    //cout <<idLastAddressee<<endl;
-   // system("pause");
 
     system("cls");
     cout << " >>> DODAWANIE NOWEGO ADRESATA <<<" << endl << endl;
@@ -13,8 +10,7 @@ int AddresseeManager::addNewAddressee() {
 
     addresses.push_back(addressee);
     fileWithAddressesData.addAddresseeToFile(addressee);
-
-    return ++idLastAddressee;
+    idLastAddressee++;
 }
 
 Addressee AddresseeManager::enterDataNewAddress() {
@@ -54,7 +50,32 @@ void AddresseeManager::userLogout() {
 
 void AddresseeManager::loadAddressesLoggedUserFile() {
     idLastAddressee = fileWithAddressesData.loadAddressesLoggedUserFile(addresses,idLoggedUser);
-    cout <<idLastAddressee<<endl;
+}
+ void AddresseeManager::showUserAddresses(){
+    system("cls");
+    if (!addresses.empty())
+    {
+        cout << "             >>> ADRESACI <<<" << endl;
+        cout << "-----------------------------------------------" << endl;
+        for (vector <Addressee> :: iterator itr = addresses.begin(); itr != addresses.end(); itr++)
+        {
+            showAddresseeData(*itr);
+        }
+        cout << endl;
+    }
+    else
+    {
+        cout << endl << "Ksiazka adresowa jest pusta." << endl << endl;
+    }
     system("pause");
 }
 
+void AddresseeManager::showAddresseeData(Addressee addressee)
+{
+    cout << endl << "Id:                 " << addressee.getId() << endl;
+    cout << "Imie:               " << addressee.getName() << endl;
+    cout << "Nazwisko:           " << addressee.getSurname() << endl;
+    cout << "Numer telefonu:     " << addressee.getPhoneNumber() << endl;
+    cout << "Email:              " << addressee.getEmail() << endl;
+    cout << "Adres:              " << addressee.getAddress() << endl;
+}

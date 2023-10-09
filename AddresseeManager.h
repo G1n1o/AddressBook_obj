@@ -11,17 +11,19 @@ using namespace std;
 class AddresseeManager {
     int idLoggedUser;
     int idLastAddressee;
-
     vector <Addressee> addresses;
     FileWithAddressesData fileWithAddressesData;
+
     Addressee enterDataNewAddress();
+    void showAddresseeData(Addressee addressee);
 
 
 public:
     AddresseeManager(string fileNameWithAddresses) : fileWithAddressesData(fileNameWithAddresses) {};
     int setIdLoggedUser(int newIdLoggedUser);
-    int addNewAddressee();
+    void addNewAddressee();
     void userLogout();
     void loadAddressesLoggedUserFile();
+    void showUserAddresses();
 
 };

@@ -64,13 +64,12 @@ int FileWithAddressesData::loadAddressesLoggedUserFile(vector <Addressee> &addre
         {
             if(idLoggedUser == getIdUserFromDataSeparatedByVerticalDashes(singleAddresseeDataSeparatedbyVerticalDashes))
             {
-                cout <<"sprawdzam idUser: "<< idLoggedUser <<endl;
-                addressee = getAddresseeData(singleAddresseeDataSeparatedbyVerticalDashes);
+                   addressee = getAddresseeData(singleAddresseeDataSeparatedbyVerticalDashes);
                 addresses.push_back(addressee);
             }
         }
         dataLastAddresseeInFile = singleAddresseeDataSeparatedbyVerticalDashes;
-        cout <<"sprawdzam adresata "<< dataLastAddresseeInFile <<endl;
+
     }
     else
         cout << "Nie udalo sie otworzyc pliku i wczytac danych." << endl;

@@ -11,11 +11,12 @@ using namespace std;
 class UserManager {
      int idLoggedUser;
      vector <User> users;
+    FileWithUsersData fileWithUsersData;
 
     User addDataNewUser();
     int getNewUserId();
     bool loginCheck(string login);
-    FileWithUsersData fileWithUsersData;
+
 
       public:
     UserManager(string fileNameWithUsers) : fileWithUsersData(fileNameWithUsers) {};
