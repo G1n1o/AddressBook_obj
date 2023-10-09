@@ -22,6 +22,7 @@ public:
     void userLogging();
     void changePasswordLoggedUser();
     void addNewAdrressee();
+    void showUserAddresses();
     void userLogout();
     void showAllUsers();
 };

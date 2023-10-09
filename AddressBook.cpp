@@ -18,7 +18,6 @@ void AddressBook::changePasswordLoggedUser() {
 userManager.changePasswordLoggedUser();
 }
 
-
 void AddressBook::userLogout() {
 userManager.userLogout();
 addresseeManager.userLogout();
@@ -26,4 +25,8 @@ addresseeManager.userLogout();
 }
 void AddressBook::addNewAdrressee(){
 addresseeManager.addNewAddressee();
+}
+
+void AddressBook::showUserAddresses(){
+addresseeManager.showUserAddresses();
 }
