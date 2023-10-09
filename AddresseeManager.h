@@ -22,7 +22,6 @@ public:
     int setIdLoggedUser(int newIdLoggedUser);
     int addNewAddressee();
     void userLogout();
+    void loadAddressesLoggedUserFile();
 
 };
-
-

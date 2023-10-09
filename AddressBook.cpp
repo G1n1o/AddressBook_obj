@@ -11,6 +11,7 @@ userManager.showAllUsers();
 void AddressBook::userLogging() {
 userManager.userLogging();
 addresseeManager.setIdLoggedUser(userManager.getidLoggedUser());
+addresseeManager.loadAddressesLoggedUserFile();
 }
 
 void AddressBook::changePasswordLoggedUser() {

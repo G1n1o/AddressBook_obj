@@ -1,10 +1,11 @@
 #include "AddresseeManager.h"
 
 
-int AddresseeManager::addNewAddressee()
-{
+int AddresseeManager::addNewAddressee() {
     Addressee addressee;
-    idLastAddressee = 0;
+
+    //cout <<idLastAddressee<<endl;
+   // system("pause");
 
     system("cls");
     cout << " >>> DODAWANIE NOWEGO ADRESATA <<<" << endl << endl;
@@ -16,8 +17,7 @@ int AddresseeManager::addNewAddressee()
     return ++idLastAddressee;
 }
 
-Addressee AddresseeManager::enterDataNewAddress()
-{
+Addressee AddresseeManager::enterDataNewAddress() {
     Addressee addressee;
 
     addressee.setId(++idLastAddressee);
@@ -42,12 +42,19 @@ Addressee AddresseeManager::enterDataNewAddress()
 
     return addressee;
 }
-  int AddresseeManager::setIdLoggedUser(int newIdLoggedUser) {
-  idLoggedUser = newIdLoggedUser;
-  return idLoggedUser;
-  }
+int AddresseeManager::setIdLoggedUser(int newIdLoggedUser) {
+    idLoggedUser = newIdLoggedUser;
+    return idLoggedUser;
+}
 
-  void AddresseeManager::userLogout(){
+void AddresseeManager::userLogout() {
     idLoggedUser = 0;
     addresses.clear();
 }
+
+void AddresseeManager::loadAddressesLoggedUserFile() {
+    idLastAddressee = fileWithAddressesData.loadAddressesLoggedUserFile(addresses,idLoggedUser);
+    cout <<idLastAddressee<<endl;
+    system("pause");
+}
+
