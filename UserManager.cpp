@@ -49,7 +49,7 @@ void UserManager::showAllUsers() {
         cout << users[i].getIdUser()<<endl;
         cout << users[i].getLogin()<<endl;
         cout << users[i].getPassword()<<endl;
-       }
+    }
 }
 
 void UserManager::userLogging() {
@@ -72,7 +72,7 @@ void UserManager::userLogging() {
             }
             cout << "Wprowadzono 3 razy bledne haslo." << endl;
             system("pause");
-            return;
+            return ;
         }
         i++;
     }
@@ -85,16 +85,25 @@ void UserManager::changePasswordLoggedUser() {
     string newPassword = "";
     cout << "Podaj nowe haslo: ";
     newPassword = SupportiveMethods::readLine();
-
-    for (vector <User>::iterator itr = users.begin(); itr != users.end(); itr++) {
-        if (itr -> getIdUser() == idLoggedUser) {
-            itr -> setPassword(newPassword);
-            cout << "Haslo zostalo zmienione." << endl << endl;
-            system("pause");
+    if (isUserLoggedIn()) {
+        for (vector <User>::iterator itr = users.begin(); itr != users.end(); itr++) {
+            if (itr -> getIdUser() == idLoggedUser) {
+                itr -> setPassword(newPassword);
+                cout << "Haslo zostalo zmienione." << endl << endl;
+                system("pause");
+            }
         }
+        fileWithUsersData.saveAllUsersDataInFile(users);
+    } else {
+        cout << "Aby zmienic haslo, nalezy sie najpierw zalogowac" << endl;
+        system("pause");
     }
-    fileWithUsersData.saveAllUsersDataInFile(users);
 }
+
+bool UserManager::isUserLoggedIn() {
+    return (idLoggedUser > 0) ? true : false;
+}
+
 int UserManager::getidLoggedUser() {
     return idLoggedUser;
 }

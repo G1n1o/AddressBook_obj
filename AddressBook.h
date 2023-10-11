@@ -10,12 +10,19 @@ using namespace std;
 class AddressBook {
 
     UserManager userManager;
-    AddresseeManager addresseeManager;
+    AddresseeManager *addresseeManager;
+    const string FILE_NAME_WITH_ADDRESSES;
 
 
 public:
     AddressBook(string fileNameWithUsers, string fileNameWithAddresses)
-    : userManager(fileNameWithUsers), addresseeManager(fileNameWithAddresses) {};
+        : userManager(fileNameWithUsers), FILE_NAME_WITH_ADDRESSES(fileNameWithAddresses) {
+        addresseeManager = NULL;
+    };
+    ~AddressBook() {
+        delete addresseeManager;
+        addresseeManager = NULL;
+    }
 
     void userRegistration();
     void userLogging();

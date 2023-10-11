@@ -22,7 +22,7 @@ public:
         idLastAddressee = 0;
     };
     int getIdLastAddressee();
-    void addAddresseeToFile(Addressee addressee);
-    void loadAddressesLoggedUserFile(vector <Addressee> &addresses, int idLoggedUser);
+    bool addAddresseeToFile(Addressee addressee);
+    vector <Addressee> loadAddressesLoggedUserFile(int idLoggedUser);
 
 };

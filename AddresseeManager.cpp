@@ -9,14 +9,16 @@ void AddresseeManager::addNewAddressee() {
     addressee = enterDataNewAddress();
 
     addresses.push_back(addressee);
-    fileWithAddressesData.addAddresseeToFile(addressee);
+    cout << ((fileWithAddressesData.addAddresseeToFile(addressee)) ? "Nowy adresat zostal dodany" : "Blad. Nie udalo sie dodac adresata do pliku" )<< endl;
+    system("pause");
 }
 
 Addressee AddresseeManager::enterDataNewAddress() {
     Addressee addressee;
+    string name, surname, phoneNumber, email, address;
 
-    addressee.setId(fileWithAddressesData.getIdLastAddressee()+1);
-    addressee.setIdUser(idLoggedUser);
+    addressee.setId(fileWithAddressesData.getIdLastAddressee() + 1);
+    addressee.setIdUser(ID_LOGGED_USER);
 
     cout << "Podaj imie: ";
     addressee.setName(SupportiveMethods::readLine());
@@ -37,6 +39,7 @@ Addressee AddresseeManager::enterDataNewAddress() {
 
     return addressee;
 }
+/*
 int AddresseeManager::setIdLoggedUser(int newIdLoggedUser) {
     idLoggedUser = newIdLoggedUser;
     return idLoggedUser;
@@ -50,6 +53,8 @@ void AddresseeManager::userLogout() {
 void AddresseeManager::loadAddressesLoggedUserFile() {
    fileWithAddressesData.loadAddressesLoggedUserFile(addresses,idLoggedUser);
 }
+*/
+
  void AddresseeManager::showUserAddresses(){
     system("cls");
     if (!addresses.empty())
@@ -78,3 +83,4 @@ void AddresseeManager::showAddresseeData(Addressee addressee)
     cout << "Email:              " << addressee.getEmail() << endl;
     cout << "Adres:              " << addressee.getAddress() << endl;
 }
+

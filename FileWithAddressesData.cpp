@@ -1,6 +1,6 @@
 #include "FileWithAddressesData.h"
 
-void FileWithAddressesData::addAddresseeToFile(Addressee addressee) {
+bool FileWithAddressesData::addAddresseeToFile(Addressee addressee) {
     string lineWithUserData = "";
     fstream textFile;
     textFile.open(FILE_NAME_WITH_ADDRESSES.c_str(), ios::out | ios::app);
@@ -15,10 +15,9 @@ void FileWithAddressesData::addAddresseeToFile(Addressee addressee) {
         }
         idLastAddressee++;
         textFile.close();
-    } else {
-        cout << "Nie udalo sie otworzyc pliku i zapisac w nim danych." << endl;
+        return true;
     }
-    system("pause");
+    return false;
 }
 
 string FileWithAddressesData::replaceDataAddresseeOnLinesSeparatedVerticalDashes(Addressee addressee) {
@@ -43,7 +42,8 @@ bool FileWithAddressesData::isFileEmpty(fstream &textFile) {
         return false;
 }
 
-void FileWithAddressesData::loadAddressesLoggedUserFile(vector <Addressee> &addresses,int idLoggedUser) {
+vector <Addressee> FileWithAddressesData::loadAddressesLoggedUserFile(int idLoggedUser) {
+    vector <Addressee> addresses;
     Addressee addressee;
     string singleAddresseeDataSeparatedbyVerticalDashes = "";
     string dataLastAddresseeInFile = "";
@@ -58,15 +58,14 @@ void FileWithAddressesData::loadAddressesLoggedUserFile(vector <Addressee> &addr
             }
         }
         dataLastAddresseeInFile = singleAddresseeDataSeparatedbyVerticalDashes;
-
+        textFile.close();
     } else
         cout << "Nie udalo sie otworzyc pliku i wczytac danych." << endl;
-
-    textFile.close();
 
     if (dataLastAddresseeInFile != "") {
         idLastAddressee = getIdFromDataSeparatedByVerticalDashes(dataLastAddresseeInFile);
     }
+    return addresses;
 }
 
 int FileWithAddressesData::getIdFromDataSeparatedByVerticalDashes(string singleAddresseeDataSeparatedbyVerticalDashes) {

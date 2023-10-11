@@ -9,8 +9,8 @@
 using namespace std;
 
 class UserManager {
-     int idLoggedUser;
-     vector <User> users;
+    int idLoggedUser;
+    vector <User> users;
     FileWithUsersData fileWithUsersData;
 
     User addDataNewUser();
@@ -18,9 +18,10 @@ class UserManager {
     bool loginCheck(string login);
 
 
-      public:
+public:
     UserManager(string fileNameWithUsers) : fileWithUsersData(fileNameWithUsers) {
-    users = fileWithUsersData.readUsersFromFile();
+        idLoggedUser = 0;
+        users = fileWithUsersData.readUsersFromFile();
     };
 
     void userRegistration();
@@ -29,4 +30,5 @@ class UserManager {
     void changePasswordLoggedUser();
     void showAllUsers();
     int getidLoggedUser();
-     };
+    bool isUserLoggedIn();
+};

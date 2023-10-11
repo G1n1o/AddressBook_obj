@@ -10,8 +10,9 @@ void AddressBook::showAllUsers() {
 
 void AddressBook::userLogging() {
     userManager.userLogging();
-    addresseeManager.setIdLoggedUser(userManager.getidLoggedUser());
-    addresseeManager.loadAddressesLoggedUserFile();
+    if (userManager.isUserLoggedIn()) {
+        addresseeManager = new AddresseeManager(FILE_NAME_WITH_ADDRESSES,userManager.getidLoggedUser());
+    }
 }
 
 void AddressBook::changePasswordLoggedUser() {
@@ -20,13 +21,24 @@ void AddressBook::changePasswordLoggedUser() {
 
 void AddressBook::userLogout() {
     userManager.userLogout();
-    addresseeManager.userLogout();
+    delete addresseeManager;
+    addresseeManager = NULL;
 
 }
 void AddressBook::addNewAdrressee() {
-    addresseeManager.addNewAddressee();
+    if (userManager.isUserLoggedIn()) {
+        addresseeManager->addNewAddressee();
+    } else {
+        cout << "Aby dodac adresata, nalezy sie najpierw zalogowac" << endl;
+        system("pause");
+    }
 }
 
 void AddressBook::showUserAddresses() {
-    addresseeManager.showUserAddresses();
+    if (userManager.isUserLoggedIn()) {
+        addresseeManager->showUserAddresses();
+    }  else {
+        cout << "Aby wyswietlic adresatow, nalezy sie najpierw zalogowac" << endl;
+        system("pause");
+    }
 }
