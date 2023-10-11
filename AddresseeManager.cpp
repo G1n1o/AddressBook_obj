@@ -10,13 +10,12 @@ void AddresseeManager::addNewAddressee() {
 
     addresses.push_back(addressee);
     fileWithAddressesData.addAddresseeToFile(addressee);
-    idLastAddressee++;
 }
 
 Addressee AddresseeManager::enterDataNewAddress() {
     Addressee addressee;
 
-    addressee.setId(++idLastAddressee);
+    addressee.setId(fileWithAddressesData.getIdLastAddressee()+1);
     addressee.setIdUser(idLoggedUser);
 
     cout << "Podaj imie: ";
@@ -49,7 +48,7 @@ void AddresseeManager::userLogout() {
 }
 
 void AddresseeManager::loadAddressesLoggedUserFile() {
-    idLastAddressee = fileWithAddressesData.loadAddressesLoggedUserFile(addresses,idLoggedUser);
+   fileWithAddressesData.loadAddressesLoggedUserFile(addresses,idLoggedUser);
 }
  void AddresseeManager::showUserAddresses(){
     system("cls");

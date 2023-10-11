@@ -3,7 +3,7 @@
 void FileWithUsersData::saveUserDataInFile(User user) {
     fstream textFile;
     string lineWithUserData = "";
-    textFile.open(fileNameWithUsers.c_str(), ios::app);
+    textFile.open(FILE_NAME_WITH_USERS.c_str(), ios::app);
 
     if (textFile.good() == true) {
         lineWithUserData = replaceUserDataOnDataLineSeparatedVerticalDashes(user);
@@ -14,7 +14,7 @@ void FileWithUsersData::saveUserDataInFile(User user) {
             textFile << endl << lineWithUserData ;
         }
     } else
-        cout << "Nie udalo sie otworzyc pliku " << fileNameWithUsers << " i zapisac w nim danych." << endl;
+        cout << "Nie udalo sie otworzyc pliku " << FILE_NAME_WITH_USERS << " i zapisac w nim danych." << endl;
     textFile.close();
 }
 
@@ -40,7 +40,7 @@ vector <User> FileWithUsersData::readUsersFromFile() {
     fstream textFile;
     string singleUserDataSeparatedbyVerticalDashes = "";
 
-    textFile.open(fileNameWithUsers.c_str(), ios::in);
+    textFile.open(FILE_NAME_WITH_USERS.c_str(), ios::in);
 
     if (textFile.good() == true) {
         while (getline(textFile, singleUserDataSeparatedbyVerticalDashes)) {
@@ -85,7 +85,7 @@ void FileWithUsersData::saveAllUsersDataInFile(vector <User> &users) {
     string lineWithUserData = "";
     vector <User>::iterator itrEnd = --users.end();
 
-    textFile.open(fileNameWithUsers.c_str(), ios::out);
+    textFile.open(FILE_NAME_WITH_USERS.c_str(), ios::out);
 
     if (textFile.good() == true) {
         for (vector <User>::iterator itr = users.begin(); itr != users.end(); itr++) {
@@ -99,7 +99,7 @@ void FileWithUsersData::saveAllUsersDataInFile(vector <User> &users) {
             lineWithUserData = "";
         }
     } else {
-        cout << "Nie mozna otworzyc pliku " << fileNameWithUsers << endl;
+        cout << "Nie mozna otworzyc pliku " << FILE_NAME_WITH_USERS << endl;
     }
     textFile.close();
 }

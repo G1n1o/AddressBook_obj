@@ -1,33 +1,27 @@
 #include "FileWithAddressesData.h"
 
-void FileWithAddressesData::addAddresseeToFile(Addressee addressee)
-{
+void FileWithAddressesData::addAddresseeToFile(Addressee addressee) {
     string lineWithUserData = "";
     fstream textFile;
-    textFile.open(fileNameWithAddresses.c_str(), ios::out | ios::app);
+    textFile.open(FILE_NAME_WITH_ADDRESSES.c_str(), ios::out | ios::app);
 
-    if (textFile.good() == true)
-    {
+    if (textFile.good() == true) {
         lineWithUserData = replaceDataAddresseeOnLinesSeparatedVerticalDashes(addressee);
 
-        if (isFileEmpty(textFile) == true)
-        {
+        if (isFileEmpty(textFile) == true) {
             textFile << lineWithUserData;
-        }
-        else
-        {
+        } else {
             textFile << endl << lineWithUserData ;
         }
-    }
-    else
-    {
+        idLastAddressee++;
+        textFile.close();
+    } else {
         cout << "Nie udalo sie otworzyc pliku i zapisac w nim danych." << endl;
     }
-    textFile.close();
     system("pause");
 }
-string FileWithAddressesData::replaceDataAddresseeOnLinesSeparatedVerticalDashes(Addressee addressee)
-{
+
+string FileWithAddressesData::replaceDataAddresseeOnLinesSeparatedVerticalDashes(Addressee addressee) {
     string lineWithAddresseeData = "";
 
     lineWithAddresseeData += SupportiveMethods::convertFromIntToString(addressee.getId()) + '|';
@@ -49,50 +43,38 @@ bool FileWithAddressesData::isFileEmpty(fstream &textFile) {
         return false;
 }
 
-int FileWithAddressesData::loadAddressesLoggedUserFile(vector <Addressee> &addresses,int idLoggedUser)
-{
+void FileWithAddressesData::loadAddressesLoggedUserFile(vector <Addressee> &addresses,int idLoggedUser) {
     Addressee addressee;
-    int idLastAddressee = 0;
     string singleAddresseeDataSeparatedbyVerticalDashes = "";
     string dataLastAddresseeInFile = "";
     fstream textFile;
-    textFile.open(fileNameWithAddresses.c_str(), ios::in);
+    textFile.open(FILE_NAME_WITH_ADDRESSES.c_str(), ios::in);
 
-    if (textFile.good() == true)
-    {
-        while (getline(textFile, singleAddresseeDataSeparatedbyVerticalDashes))
-        {
-            if(idLoggedUser == getIdUserFromDataSeparatedByVerticalDashes(singleAddresseeDataSeparatedbyVerticalDashes))
-            {
-                   addressee = getAddresseeData(singleAddresseeDataSeparatedbyVerticalDashes);
+    if (textFile.good() == true) {
+        while (getline(textFile, singleAddresseeDataSeparatedbyVerticalDashes)) {
+            if(idLoggedUser == getIdUserFromDataSeparatedByVerticalDashes(singleAddresseeDataSeparatedbyVerticalDashes)) {
+                addressee = getAddresseeData(singleAddresseeDataSeparatedbyVerticalDashes);
                 addresses.push_back(addressee);
             }
         }
         dataLastAddresseeInFile = singleAddresseeDataSeparatedbyVerticalDashes;
 
-    }
-    else
+    } else
         cout << "Nie udalo sie otworzyc pliku i wczytac danych." << endl;
 
     textFile.close();
 
-    if (dataLastAddresseeInFile != "")
-    {
+    if (dataLastAddresseeInFile != "") {
         idLastAddressee = getIdFromDataSeparatedByVerticalDashes(dataLastAddresseeInFile);
-        return idLastAddressee;
     }
-    else
-        return 0;
 }
 
-int FileWithAddressesData::getIdFromDataSeparatedByVerticalDashes(string singleAddresseeDataSeparatedbyVerticalDashes)
-{
+int FileWithAddressesData::getIdFromDataSeparatedByVerticalDashes(string singleAddresseeDataSeparatedbyVerticalDashes) {
     int startPositionIdAddressee = 0;
     int id = SupportiveMethods::convertFromStringToInt(SupportiveMethods::getNumber(singleAddresseeDataSeparatedbyVerticalDashes, startPositionIdAddressee));
     return id;
 }
-int FileWithAddressesData::getIdUserFromDataSeparatedByVerticalDashes(string singleAddresseeDataSeparatedbyVerticalDashes)
-{
+int FileWithAddressesData::getIdUserFromDataSeparatedByVerticalDashes(string singleAddresseeDataSeparatedbyVerticalDashes) {
     int startPositionIdUser = singleAddresseeDataSeparatedbyVerticalDashes.find_first_of('|') + 1;
     int idUser = SupportiveMethods::convertFromStringToInt(SupportiveMethods::getNumber(singleAddresseeDataSeparatedbyVerticalDashes, startPositionIdUser));
 
@@ -100,22 +82,16 @@ int FileWithAddressesData::getIdUserFromDataSeparatedByVerticalDashes(string sin
 }
 
 
-Addressee FileWithAddressesData::getAddresseeData(string addresseeDataSeparatedbyVerticalDashes)
-{
+Addressee FileWithAddressesData::getAddresseeData(string addresseeDataSeparatedbyVerticalDashes) {
     Addressee addressee;
     string singleAddresseeData = "";
     int numberOfSingleAddresseeData = 1;
 
-    for (size_t signPosition = 0; signPosition < addresseeDataSeparatedbyVerticalDashes.length(); signPosition++)
-    {
-        if (addresseeDataSeparatedbyVerticalDashes[signPosition] != '|')
-        {
+    for (size_t signPosition = 0; signPosition < addresseeDataSeparatedbyVerticalDashes.length(); signPosition++) {
+        if (addresseeDataSeparatedbyVerticalDashes[signPosition] != '|') {
             singleAddresseeData += addresseeDataSeparatedbyVerticalDashes[signPosition];
-        }
-        else
-        {
-            switch(numberOfSingleAddresseeData)
-            {
+        } else {
+            switch(numberOfSingleAddresseeData) {
             case 1:
                 addressee.setId(atoi(singleAddresseeData.c_str()));
                 break;
@@ -143,4 +119,8 @@ Addressee FileWithAddressesData::getAddresseeData(string addresseeDataSeparatedb
         }
     }
     return addressee;
+}
+
+int FileWithAddressesData::getIdLastAddressee() {
+    return idLastAddressee;
 }

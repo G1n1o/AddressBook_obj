@@ -1,32 +1,32 @@
 #include "AddressBook.h"
 
 void AddressBook::userRegistration() {
-userManager.userRegistration();
+    userManager.userRegistration();
 }
 
 void AddressBook::showAllUsers() {
-userManager.showAllUsers();
+    userManager.showAllUsers();
 }
 
 void AddressBook::userLogging() {
-userManager.userLogging();
-addresseeManager.setIdLoggedUser(userManager.getidLoggedUser());
-addresseeManager.loadAddressesLoggedUserFile();
+    userManager.userLogging();
+    addresseeManager.setIdLoggedUser(userManager.getidLoggedUser());
+    addresseeManager.loadAddressesLoggedUserFile();
 }
 
 void AddressBook::changePasswordLoggedUser() {
-userManager.changePasswordLoggedUser();
+    userManager.changePasswordLoggedUser();
 }
 
 void AddressBook::userLogout() {
-userManager.userLogout();
-addresseeManager.userLogout();
+    userManager.userLogout();
+    addresseeManager.userLogout();
 
 }
-void AddressBook::addNewAdrressee(){
-addresseeManager.addNewAddressee();
+void AddressBook::addNewAdrressee() {
+    addresseeManager.addNewAddressee();
 }
 
-void AddressBook::showUserAddresses(){
-addresseeManager.showUserAddresses();
+void AddressBook::showUserAddresses() {
+    addresseeManager.showUserAddresses();
 }

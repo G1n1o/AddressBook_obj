@@ -51,9 +51,6 @@ void UserManager::showAllUsers() {
         cout << users[i].getPassword()<<endl;
        }
 }
-void UserManager::readUsersFromFile() {
-    users = fileWithUsersData.readUsersFromFile();
-}
 
 void UserManager::userLogging() {
     string login = "", password = "";

@@ -10,7 +10,6 @@ using namespace std;
 
 class AddresseeManager {
     int idLoggedUser;
-    int idLastAddressee;
     vector <Addressee> addresses;
     FileWithAddressesData fileWithAddressesData;
 

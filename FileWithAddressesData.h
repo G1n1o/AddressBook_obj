@@ -8,7 +8,8 @@
 using namespace std;
 
 class FileWithAddressesData {
-    const string fileNameWithAddresses;
+    const string FILE_NAME_WITH_ADDRESSES;
+    int idLastAddressee;
 
     string replaceDataAddresseeOnLinesSeparatedVerticalDashes(Addressee addressee);
     bool isFileEmpty(fstream &textFile);
@@ -16,9 +17,12 @@ class FileWithAddressesData {
     int getIdUserFromDataSeparatedByVerticalDashes(string singleAddresseeDataSeparatedbyVerticalDashes);
     Addressee getAddresseeData(string addresseeDataSeparatedbyVerticalDashes);
 
-    public:
-    FileWithAddressesData(string FILENAMEWITHADDRESSES) : fileNameWithAddresses(FILENAMEWITHADDRESSES){};
+public:
+    FileWithAddressesData(string fileNameWithAddresses) : FILE_NAME_WITH_ADDRESSES(fileNameWithAddresses) {
+        idLastAddressee = 0;
+    };
+    int getIdLastAddressee();
     void addAddresseeToFile(Addressee addressee);
-    int loadAddressesLoggedUserFile(vector <Addressee> &addresses, int idLoggedUser);
+    void loadAddressesLoggedUserFile(vector <Addressee> &addresses, int idLoggedUser);
 
 };

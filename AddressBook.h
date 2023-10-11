@@ -15,9 +15,8 @@ class AddressBook {
 
 public:
     AddressBook(string fileNameWithUsers, string fileNameWithAddresses)
-    : userManager(fileNameWithUsers), addresseeManager(fileNameWithAddresses) {
-        userManager.readUsersFromFile();
-    };
+    : userManager(fileNameWithUsers), addresseeManager(fileNameWithAddresses) {};
+
     void userRegistration();
     void userLogging();
     void changePasswordLoggedUser();
