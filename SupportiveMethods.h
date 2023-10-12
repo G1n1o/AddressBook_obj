@@ -14,7 +14,7 @@ class SupportiveMethods {
     static int convertFromStringToInt(string number);
     static string swapFirstLetterForLargeOtherForSmall(string text);
     static string getNumber(string text, int positionSign);
-
+    static char readSign();
 
 };
 

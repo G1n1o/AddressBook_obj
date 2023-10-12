@@ -47,7 +47,6 @@ vector <User> FileWithUsersData::readUsersFromFile() {
             user = readUserData(singleUserDataSeparatedbyVerticalDashes);
             users.push_back(user);
         }
-
     }
     textFile.close();
     return users;
