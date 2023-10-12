@@ -16,6 +16,7 @@ class UserManager {
     User addDataNewUser();
     int getNewUserId();
     bool loginCheck(string login);
+    char selectOptionFromGeneralMenu();
 
 
 public:

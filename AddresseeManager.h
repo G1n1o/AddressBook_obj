@@ -9,9 +9,9 @@
 using namespace std;
 
 class AddresseeManager {
+    FileWithAddressesData fileWithAddressesData;
     const int ID_LOGGED_USER;
     vector <Addressee> addresses;
-    FileWithAddressesData fileWithAddressesData;
 
     Addressee enterDataNewAddress();
     void showAddresseeData(Addressee addressee);
@@ -19,13 +19,11 @@ class AddresseeManager {
 
 public:
     AddresseeManager(string fileNameWithAddresses, int idLoggedUser)
-    : fileWithAddressesData(fileNameWithAddresses), ID_LOGGED_USER(idLoggedUser) {
-    addresses = fileWithAddressesData.loadAddressesLoggedUserFile(ID_LOGGED_USER);
+        : fileWithAddressesData(fileNameWithAddresses), ID_LOGGED_USER(idLoggedUser) {
+        addresses = fileWithAddressesData.loadAddressesLoggedUserFile(ID_LOGGED_USER);
     };
-    //int setIdLoggedUser(int newIdLoggedUser);
+
     void addNewAddressee();
-    //void userLogout();
-    //void loadAddressesLoggedUserFile();
     void showUserAddresses();
 
 };

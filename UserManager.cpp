@@ -108,7 +108,6 @@ int UserManager::getidLoggedUser() {
     return idLoggedUser;
 }
 
-
 void UserManager::userLogout() {
     idLoggedUser = 0;
 }

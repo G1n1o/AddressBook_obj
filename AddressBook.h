@@ -13,7 +13,6 @@ class AddressBook {
     AddresseeManager *addresseeManager;
     const string FILE_NAME_WITH_ADDRESSES;
 
-
 public:
     AddressBook(string fileNameWithUsers, string fileNameWithAddresses)
         : userManager(fileNameWithUsers), FILE_NAME_WITH_ADDRESSES(fileNameWithAddresses) {
@@ -30,7 +29,10 @@ public:
     void addNewAdrressee();
     void showUserAddresses();
     void userLogout();
+    bool isUserLoggedin();
     void showAllUsers();
+    char selectOptionFromGeneralMenu();
+    char selectOptionFromUserMenu();
 };
 
 #endif

@@ -39,22 +39,6 @@ Addressee AddresseeManager::enterDataNewAddress() {
 
     return addressee;
 }
-/*
-int AddresseeManager::setIdLoggedUser(int newIdLoggedUser) {
-    idLoggedUser = newIdLoggedUser;
-    return idLoggedUser;
-}
-
-void AddresseeManager::userLogout() {
-    idLoggedUser = 0;
-    addresses.clear();
-}
-
-void AddresseeManager::loadAddressesLoggedUserFile() {
-   fileWithAddressesData.loadAddressesLoggedUserFile(addresses,idLoggedUser);
-}
-*/
-
  void AddresseeManager::showUserAddresses(){
     system("cls");
     if (!addresses.empty())

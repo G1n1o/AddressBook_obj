@@ -43,4 +43,18 @@ int SupportiveMethods::convertFromStringToInt(string number)
     return numberInt;
 }
 
+char SupportiveMethods::readSign() {
+    string input;
+    char sign = {0};
+
+    while (true) {
+        input = readLine();
+        if (input.length() == 1 ) {
+            sign = input[0];
+            break;
+        }
+        cout << "To nie jest pojedynczy znak. Wpisz ponownie: " << endl;
+    }
+    return sign;
+}
 
