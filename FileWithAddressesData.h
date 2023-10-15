@@ -2,6 +2,7 @@
 #include <vector>
 #include <fstream>
 #include <cstdlib>
+#include <filesystem>
 #include "Addressee.h"
 #include "SupportiveMethods.h"
 
@@ -16,11 +17,15 @@ class FileWithAddressesData {
     int getIdFromDataSeparatedByVerticalDashes(string singleAddresseeDataSeparatedbyVerticalDashes);
     int getIdUserFromDataSeparatedByVerticalDashes(string singleAddresseeDataSeparatedbyVerticalDashes);
     Addressee getAddresseeData(string addresseeDataSeparatedbyVerticalDashes);
+    void removeLastEmptyLine();
+
 
 public:
     FileWithAddressesData(string fileNameWithAddresses) : FILE_NAME_WITH_ADDRESSES(fileNameWithAddresses) {
         idLastAddressee = 0;
     };
+    void saveChangesAddresseeInFile(Addressee addressee);
+    void saveRemovesAddresseeInFile(Addressee addressee);
     int getIdLastAddressee();
     bool addAddresseeToFile(Addressee addressee);
     vector <Addressee> loadAddressesLoggedUserFile(int idLoggedUser);

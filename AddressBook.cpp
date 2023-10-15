@@ -82,3 +82,15 @@ char AddressBook::selectOptionFromUserMenu() {
     choice = SupportiveMethods::readSign();
     return choice;
 }
+void AddressBook::searchByName() {
+    addresseeManager->searchByName();
+}
+void AddressBook::searchBySurname() {
+    addresseeManager->searchBySurname();
+}
+void AddressBook::editAddressee() {
+    addresseeManager->editAddressee();
+}
+void AddressBook::removeAddressee() {
+    addresseeManager->removeAddressee();
+}
