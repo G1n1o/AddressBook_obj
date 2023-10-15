@@ -28,7 +28,7 @@ User UserManager::addDataNewUser() {
 }
 
 int UserManager::getNewUserId() {
-    if (users.empty() == true)
+    if (users.empty())
         return 1;
     else
         return users.back().getIdUser() + 1;

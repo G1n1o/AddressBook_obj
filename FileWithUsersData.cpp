@@ -20,10 +20,7 @@ void FileWithUsersData::saveUserDataInFile(User user) {
 
 bool FileWithUsersData::isFileEmpty(fstream &textFile) {
     textFile.seekg(0, ios::end);
-    if (textFile.tellg() == 0)
-        return true;
-    else
-        return false;
+    return  (textFile.tellg() == 0) ? true : false;
 }
 
 string FileWithUsersData::replaceUserDataOnDataLineSeparatedVerticalDashes(User user) {
@@ -42,7 +39,7 @@ vector <User> FileWithUsersData::readUsersFromFile() {
 
     textFile.open(FILE_NAME_WITH_USERS.c_str(), ios::in);
 
-    if (textFile.good() == true) {
+    if (textFile.good()) {
         while (getline(textFile, singleUserDataSeparatedbyVerticalDashes)) {
             user = readUserData(singleUserDataSeparatedbyVerticalDashes);
             users.push_back(user);
@@ -62,15 +59,9 @@ User FileWithUsersData::readUserData(string singleUserDataSeparatedbyVerticalDas
             singleUserData += singleUserDataSeparatedbyVerticalDashes[itemSign];
         } else {
             switch(numberSingleDataUser) {
-            case 1:
-                user.setIdUser(atoi(singleUserData.c_str()));
-                break;
-            case 2:
-                user.setLogin(singleUserData);
-                break;
-            case 3:
-                user.setPassword(singleUserData);
-                break;
+            case 1: user.setIdUser(atoi(singleUserData.c_str())); break;
+            case 2: user.setLogin(singleUserData); break;
+            case 3: user.setPassword(singleUserData); break;
             }
             singleUserData = "";
             numberSingleDataUser++;
@@ -86,7 +77,7 @@ void FileWithUsersData::saveAllUsersDataInFile(vector <User> &users) {
 
     textFile.open(FILE_NAME_WITH_USERS.c_str(), ios::out);
 
-    if (textFile.good() == true) {
+    if (textFile.good()) {
         for (vector <User>::iterator itr = users.begin(); itr != users.end(); itr++) {
             lineWithUserData = replaceUserDataOnDataLineSeparatedVerticalDashes(*itr);
 

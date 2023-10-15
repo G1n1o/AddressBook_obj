@@ -15,6 +15,7 @@ class SupportiveMethods {
     static string swapFirstLetterForLargeOtherForSmall(string text);
     static string getNumber(string text, int positionSign);
     static char readSign();
+    static int readNumber();
 
 };
 

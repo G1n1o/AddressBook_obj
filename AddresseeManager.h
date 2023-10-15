@@ -15,6 +15,9 @@ class AddresseeManager {
 
     Addressee enterDataNewAddress();
     void showAddresseeData(Addressee addressee);
+    void displayNumberofSelectedAddresses(int numberAddressers);
+    int enterIdSelectedAddress();
+    char selectOptionsMenuEdit();
 
 
 public:
@@ -25,5 +28,9 @@ public:
 
     void addNewAddressee();
     void showUserAddresses();
+    void searchByName();
+    void searchBySurname();
+    void editAddressee();
+    void removeAddressee();
 
 };

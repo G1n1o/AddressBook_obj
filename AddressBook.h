@@ -33,6 +33,10 @@ public:
     void showAllUsers();
     char selectOptionFromGeneralMenu();
     char selectOptionFromUserMenu();
+    void searchByName();
+    void searchBySurname();
+    void editAddressee();
+    void removeAddressee();
 };
 
 #endif

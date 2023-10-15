@@ -58,3 +58,20 @@ char SupportiveMethods::readSign() {
     return sign;
 }
 
+int SupportiveMethods::readNumber() {
+    string input;
+    int number;
+
+    while (true) {
+        getline(cin,input);
+
+        stringstream myStream(input);
+        if (myStream >> number) {
+            break;
+        }
+        cout << "To nie jest liczba. Wpisz ponownie: " << endl;
+    }
+
+    return number;
+}
+
