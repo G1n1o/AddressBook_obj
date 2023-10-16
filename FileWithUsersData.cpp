@@ -3,7 +3,7 @@
 void FileWithUsersData::saveUserDataInFile(User user) {
     fstream textFile;
     string lineWithUserData = "";
-    textFile.open(FILE_NAME_WITH_USERS.c_str(), ios::app);
+    textFile.open(getFileName().c_str(), ios::app);
 
     if (textFile.good() == true) {
         lineWithUserData = replaceUserDataOnDataLineSeparatedVerticalDashes(user);
@@ -14,13 +14,8 @@ void FileWithUsersData::saveUserDataInFile(User user) {
             textFile << endl << lineWithUserData ;
         }
     } else
-        cout << "Nie udalo sie otworzyc pliku " << FILE_NAME_WITH_USERS << " i zapisac w nim danych." << endl;
+        cout << "Nie udalo sie otworzyc pliku " << getFileName() << " i zapisac w nim danych." << endl;
     textFile.close();
-}
-
-bool FileWithUsersData::isFileEmpty(fstream &textFile) {
-    textFile.seekg(0, ios::end);
-    return  (textFile.tellg() == 0) ? true : false;
 }
 
 string FileWithUsersData::replaceUserDataOnDataLineSeparatedVerticalDashes(User user) {
@@ -37,7 +32,7 @@ vector <User> FileWithUsersData::readUsersFromFile() {
     fstream textFile;
     string singleUserDataSeparatedbyVerticalDashes = "";
 
-    textFile.open(FILE_NAME_WITH_USERS.c_str(), ios::in);
+    textFile.open(getFileName().c_str(), ios::in);
 
     if (textFile.good()) {
         while (getline(textFile, singleUserDataSeparatedbyVerticalDashes)) {
@@ -75,7 +70,7 @@ void FileWithUsersData::saveAllUsersDataInFile(vector <User> &users) {
     string lineWithUserData = "";
     vector <User>::iterator itrEnd = --users.end();
 
-    textFile.open(FILE_NAME_WITH_USERS.c_str(), ios::out);
+    textFile.open(getFileName().c_str(), ios::out);
 
     if (textFile.good()) {
         for (vector <User>::iterator itr = users.begin(); itr != users.end(); itr++) {
@@ -89,7 +84,7 @@ void FileWithUsersData::saveAllUsersDataInFile(vector <User> &users) {
             lineWithUserData = "";
         }
     } else {
-        cout << "Nie mozna otworzyc pliku " << FILE_NAME_WITH_USERS << endl;
+        cout << "Nie mozna otworzyc pliku " << getFileName() << endl;
     }
     textFile.close();
 }

@@ -5,15 +5,15 @@
 #include <filesystem>
 #include "Addressee.h"
 #include "SupportiveMethods.h"
+#include "TextFile.h"
+
 
 using namespace std;
 
-class FileWithAddressesData {
-    const string FILE_NAME_WITH_ADDRESSES;
+class FileWithAddressesData : public TextFile {
     int idLastAddressee;
 
     string replaceDataAddresseeOnLinesSeparatedVerticalDashes(Addressee addressee);
-    bool isFileEmpty(fstream &textFile);
     int getIdFromDataSeparatedByVerticalDashes(string singleAddresseeDataSeparatedbyVerticalDashes);
     int getIdUserFromDataSeparatedByVerticalDashes(string singleAddresseeDataSeparatedbyVerticalDashes);
     Addressee getAddresseeData(string addresseeDataSeparatedbyVerticalDashes);
@@ -21,7 +21,7 @@ class FileWithAddressesData {
 
 
 public:
-    FileWithAddressesData(string fileNameWithAddresses) : FILE_NAME_WITH_ADDRESSES(fileNameWithAddresses) {
+    FileWithAddressesData(string fileNameWithAddresses) : TextFile(fileNameWithAddresses) {
         idLastAddressee = 0;
     };
     void saveChangesAddresseeInFile(Addressee addressee);
