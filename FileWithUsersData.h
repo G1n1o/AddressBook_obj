@@ -4,20 +4,18 @@
 #include <cstdlib>
 #include "User.h"
 #include "SupportiveMethods.h"
+#include "TextFile.h"
 
 using namespace std;
 
-class FileWithUsersData {
-
-    const string FILE_NAME_WITH_USERS;
+class FileWithUsersData : public TextFile {
 
     string replaceUserDataOnDataLineSeparatedVerticalDashes(User user);
     User readUserData(string singleUserDataSeparatedbyVerticalDashes);
-    bool isFileEmpty(fstream &textFile);
 
 
 public:
-    FileWithUsersData(string fileNameWithUsers) : FILE_NAME_WITH_USERS (fileNameWithUsers) {};
+    FileWithUsersData(string fileNameWithUsers) : TextFile(fileNameWithUsers) {};
     vector <User> readUsersFromFile();
     void saveUserDataInFile(User user);
     void saveAllUsersDataInFile(vector <User> &users);

@@ -3,7 +3,7 @@
 bool FileWithAddressesData::addAddresseeToFile(Addressee addressee) {
     string lineWithUserData = "";
     fstream textFile;
-    textFile.open(FILE_NAME_WITH_ADDRESSES.c_str(), ios::out | ios::app);
+    textFile.open(getFileName().c_str(), ios::out | ios::app);
 
     if (textFile.good()) {
         lineWithUserData = replaceDataAddresseeOnLinesSeparatedVerticalDashes(addressee);
@@ -34,18 +34,13 @@ string FileWithAddressesData::replaceDataAddresseeOnLinesSeparatedVerticalDashes
     return lineWithAddresseeData;
 }
 
-bool FileWithAddressesData::isFileEmpty(fstream &textFile) {
-    textFile.seekg(0, ios::end);
-    return  (textFile.tellg() == 0) ? true : false;
-}
-
 vector <Addressee> FileWithAddressesData::loadAddressesLoggedUserFile(int idLoggedUser) {
     vector <Addressee> addresses;
     Addressee addressee;
     string singleAddresseeDataSeparatedbyVerticalDashes = "";
     string dataLastAddresseeInFile = "";
     fstream textFile;
-    textFile.open(FILE_NAME_WITH_ADDRESSES.c_str(), ios::in);
+    textFile.open(getFileName().c_str(), ios::in);
 
     if (textFile.good()) {
         while (getline(textFile, singleAddresseeDataSeparatedbyVerticalDashes)) {
@@ -122,7 +117,7 @@ void FileWithAddressesData::saveChangesAddresseeInFile (Addressee addressee) {
     int idEditedAddressee = 0;
     string editedLine ="";
     string line = "";
-    ifstream addressesFile (FILE_NAME_WITH_ADDRESSES.c_str());
+    ifstream addressesFile (getFileName().c_str());
     ofstream userAddressesFile ("addresses_temp.txt");
 
     while(getline(addressesFile, line))    {
@@ -136,8 +131,8 @@ void FileWithAddressesData::saveChangesAddresseeInFile (Addressee addressee) {
     }
     addressesFile.close();
     userAddressesFile.close();
-    remove(FILE_NAME_WITH_ADDRESSES.c_str());
-    rename("addresses_temp.txt", FILE_NAME_WITH_ADDRESSES.c_str());
+    remove(getFileName().c_str());
+    rename("addresses_temp.txt", getFileName().c_str());
     removeLastEmptyLine();
 
 }
@@ -145,7 +140,7 @@ void FileWithAddressesData::saveChangesAddresseeInFile (Addressee addressee) {
 void FileWithAddressesData::saveRemovesAddresseeInFile (Addressee addressee) {
     int idDeletedAddressee = 0;
     string line = "";
-    ifstream addressesFile (FILE_NAME_WITH_ADDRESSES.c_str());
+    ifstream addressesFile (getFileName().c_str());
     ofstream userAddressesFile ("addresses_temp.txt");
 
     while(getline(addressesFile, line)) {
@@ -164,8 +159,8 @@ void FileWithAddressesData::saveRemovesAddresseeInFile (Addressee addressee) {
 
     addressesFile.close();
     userAddressesFile.close();
-    remove(FILE_NAME_WITH_ADDRESSES.c_str());
-    rename("addresses_temp.txt", FILE_NAME_WITH_ADDRESSES.c_str());
+    remove(getFileName().c_str());
+    rename("addresses_temp.txt", getFileName().c_str());
     removeLastEmptyLine();
 }
 
@@ -173,7 +168,7 @@ void FileWithAddressesData::removeLastEmptyLine() {
     vector <string> lines;
     string line;
 
-    ifstream inputFile(FILE_NAME_WITH_ADDRESSES);
+    ifstream inputFile(getFileName());
 
     if (inputFile.good()) {
         while (getline(inputFile, line)) {
@@ -184,7 +179,7 @@ void FileWithAddressesData::removeLastEmptyLine() {
     }
     inputFile.close();
 
-    ofstream outputFile(FILE_NAME_WITH_ADDRESSES);
+    ofstream outputFile(getFileName());
     if (outputFile.good()) {
         for (size_t i = 0; i < lines.size(); ++i) {
             if (i < lines.size() -1 ) {
